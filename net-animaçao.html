@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    @font-face {
+      font-family: sceptical;
+      src: url(Sceptical.otf);
+    }
+    @font-face {
+      font-family: Dar;
+      src: url(Darlothes\ Grunge.otf);
+    }
+
+    body {
+      user-select: none;
+      background-color: black;
+    }
+
+    #fundo {
+      top: 0%;
+      width: auto;
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: center;
+      image-rendering: optimizeQuality;
+      height: 100vh;
+      filter: brightness() opacity(30%);
+      background-image: url(https://i.pinimg.com/originals/1a/5d/5b/1a5d5b2f6d034183c75fd4904cbcb63a.gif);
+    }
+
+    #assistir {
+      text-align: center;
+      display: flex;
+      text-decoration: none;
+      position: fixed;
+      top: 50%;
+      margin-left: 7%;
+      font-size: 23px;
+      padding: 10px 35px;
+      border-radius: 7px;
+      background-color: white;
+      gap: 4px;
+      z-index: 1;
+      color: black;
+      font-weight: 900;
+      cursor: pointer;
+    }
+    #creditos {
+      text-align: center;
+      display: flex;
+      text-decoration: none;
+      position: fixed;
+      top: 50%;
+      margin-left: 17%;
+      font-size: 20px;
+      padding: 10px 35px;
+      border-radius: 7px;
+      color: white;
+      background-color: transparent;
+      border: 2px solid white;
+      gap: 4px;
+      z-index:2;
+      cursor: pointer;
+    }
+    #creditos:hover,
+    #assistir:hover {
+      transform: scale(0.99);
+    }
+    
+
+    #titulo {
+      position: fixed;
+      top: 35%;
+      margin-left: 7%;
+      font-weight: 100;
+      z-index: 1;
+      color: white;
+      font-size: 100px;
+      letter-spacing: -19px;
+      font-family: sceptical;
+    }
+    #pj {
+      position: fixed;
+      top: 30%;
+      color: white;
+      z-index: 1;
+      font-size: 30px;
+      font-family: Dar;
+      letter-spacing: 10px;
+      margin-left: 8%;
+    }
+    #perfil {
+      position: fixed;
+      top: 1%;
+      right: 1%;
+      z-index: 1;
+      color: #ffffff;
+      text-align: left;
+      display: flex;
+      justify-content: start;
+      align-items: start;
+    }
+    #perfil-icon {
+      border-radius: 50%;
+    }
+
+    #sobre{
+        height: 100vh;
+        width: 100%;
+        position: fixed;
+        top:3%;
+        color: white;
+        gap: 100%;
+        z-index: 1;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #pessoas{
+        display: none;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-family: dar;
+        letter-spacing: 2px;
+        font-size: 30px;
+    }
+    
+    #grupo {
+      display: none;
+      text-align: center;
+      justify-content: start;
+      top: 1%;
+      margin-left: 7%;
+      z-index: 1;justify-content: start;
+      color: white;
+      font-size: 120px;
+      font-family: sceptical;
+    }
+
+    #info-pessoas{
+        cursor: pointer;
+        padding: 7px;
+        margin: 10% 2%;
+        display: flex;
+        border-radius: 8px;
+        flex-direction: column;
+        justify-content: center;
+        border: 2px solid white;
+        overflow: hidden;
+        align-items: center;
+    }
+    #info-pessoas:hover{
+        scale: 1.4;
+    }
+    #info-pessoas img:hover{
+        border-radius: 6px;
+    }
+
+    #ctt{
+        display: none;
+    }
+    #inicio{
+      top: 100%;
+      z-index: 3;
+      position: fixed;
+    }
+
+    #sair{
+      padding: 2px 10px;
+      background-color: white;
+      color: black;
+      font-size: 20px;
+      cursor: pointer;
+      position: fixed;
+      margin: 2%;
+      display: none;
+      z-index: 100;
+      border-radius: 5px;
+    }
+    #sair:hover{
+      z-index: 100;
+      scale: 0.9;
+      padding: 2px 10px;
+      background-color: transparent;
+      color: white;
+      font-size: 20px;
+      position: fixed;
+      margin: 2%;
+      border: 2px solid white;
+      border-radius: 5px;
+    }
+
+    #conteudo{
+      justify-content: center;
+      align-items: center;
+      display: none;
+      z-index: 10;
+      width: 100%;
+      position: fixed;
+      height: 100vh;
+    }
+
+
+    #video {
+      position: fixed;
+      top: 0%;
+      z-index: 10;
+      display: none;
+      box-shadow: 0px 30px 40px black;
+    }
+ </style>
+
+ <script>
+
+    function creditos(){
+        document.getElementById("sobre").style.display="block";
+        document.getElementById("pessoas").style.display="flex";
+        document.getElementById("grupo").style.display="block";
+
+        document.getElementById("sair").style.display="block";
+        document.getElementById("inicio").style.display="none";
+    }
+    function sair(){
+        document.getElementById("sobre").style.display="none";
+        document.getElementById("pessoas").style.display="none";
+        document.getElementById("grupo").style.display="none";
+
+        document.getElementById("video").style.display="none";
+      document.getElementById("conteudo").style.display="none";
+      document.getElementById("video").style.position="relative";
+
+        document.getElementById("inicio").style.display="block";
+        
+        document.getElementById("sair").style.display="none";
+    }
+
+    function assistir(){
+      document.getElementById("video").style.display="block";
+      document.getElementById("conteudo").style.display="flex";
+      document.getElementById("video").style.position="fixed";
+
+        document.getElementById("sair").style.display="block";
+
+
+        document.getElementById("inicio").style.display="none";
+    }
+
+    function info(){
+      document.getElementById("ctt").style.display="block";
+    }
+
+
+    document.getElementById('hoverElement').addEventListener('mouseenter', function() {
+        alert('Mouse entered the element!');
+        this.style.backgroundColor = 'lightgreen';
+    });
+
+
+ </script>
+ <p id="sair" onclick="sair()">sair</p>
+
+  <body>
+
+    
+
+    <section id="inicio">
+    <h2 id="pj">Projeto de Vida</h2>
+
+    <h1 id="titulo">A n i m a ç ã o</h1>
+
+
+    <p id="assistir" onclick="assistir()" href="assistir">assistir</p>
+
+
+    <p id="creditos" onclick="creditos()" href="assistir">creditos</p>
+
+
+    
+  </section>
+
+  <section id="conteudo">
+  
+   <!-- <video id="video" width="1100" height="600" controls>
+    <source
+      src="Tavin part Doarda e Sofia Espanha - Te vi Dançando (Videoclipe Oficial).mp4"
+      type="video/mp4"
+    />
+  </video> -->
+  <img id="video" src="https://media.filmelier.com/noticias/br/2020/03/Netflix_LoadTime.gif" width="100%" height="100%">
+
+</section>
+    </details>
+
+    <section id="sobre">
+      <h1 id="grupo">Grupo2</h1>
+        <div >
+          
+        <ol id="pessoas">
+            <ul onclick="info()" id="info-pessoas">
+                <p>Eduardo</p>
+                <img src="https://i.pinimg.com/236x/be/63/5e/be635e844cf106b57ee689803dca58af.jpg" width="130px">
+                <a id="ctt" href="email.com">email:eduardo de mello</a>
+            </ul>
+            <ul onclick="info()" id="info-pessoas">
+                <p>Maria</p>
+                <img src="https://i.pinimg.com/236x/9a/08/07/9a0807ca97e9ce2350d809fb3348a703.jpg" width="130px">
+            </ul>
+            <ul onclick="info()" id="info-pessoas">
+                <p>Marcos</p>
+                <img src="https://i.pinimg.com/236x/27/a7/d3/27a7d36f3ac0a60c681d5cc295de819f.jpg" width="130px">
+            </ul>
+            <ul onclick="info()" id="info-pessoas">
+                <p>Kawan</p>
+                <img src="https://i.pinimg.com/236x/c3/7e/e2/c37ee2012b6e650656bdce0eda0e5294.jpg" width="130px">
+            </ul>
+        </ol>
+    </div>
+    </section>
+
+    <div>
+
+    </div>
+
+  </body>
+
+  <section id="fundo"></section>
+</html>
